@@ -25,6 +25,10 @@ public class BlogPost {
         this.blogEntry = blogEntry;
     }
 
+    public Long getId() {
+        return id;
+    }
+
     public String getTitle() {
         return title;
     }
