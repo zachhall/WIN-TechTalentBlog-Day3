@@ -47,9 +47,10 @@ public class BlogPostController {
 
         // Add attributes to our model so we can show them to the user on the results
         // page
-        model.addAttribute("title", blogPost.getTitle());
-        model.addAttribute("author", blogPost.getAuthor());
-        model.addAttribute("blogEntry", blogPost.getBlogEntry());
+        model.addAttribute("blogPost", blogPost);
+        // model.addAttribute("title", blogPost.getTitle());
+        // model.addAttribute("author", blogPost.getAuthor());
+        // model.addAttribute("blogEntry", blogPost.getBlogEntry());
         return "blogpost/result";
     }
 
@@ -69,7 +70,7 @@ public class BlogPostController {
         return "blogpost/edit";
     }
 
-    @RequestMapping(value = "/blogposts/update/{id}")
+    @RequestMapping(value = "/blogposts/update/{id}", method = RequestMethod.POST)
     public String updateExistingPost(@PathVariable Long id, BlogPost blogPost, Model model) {
         Optional<BlogPost> post = blogPostRepository.findById(id);
         if (post.isPresent()) {
